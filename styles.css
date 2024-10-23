@@ -1,0 +1,178 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color:#EFEFE8;
+  }
+  @font-face {
+    font-family: "juniper";
+    src: url(./Assets/fonts/juniperstd.otf) ;
+  }
+@font-face {
+    font-family: "mukta-bold";
+    src: url(./Assets/fonts/Mukta/Mukta-Bold.ttf);
+}
+@font-face {
+    font-family: "mukta-extrabold";
+    src: url(./Assets/fonts/Mukta/Mukta-ExtraBold.ttf);
+}
+@font-face {
+    font-family: "mukta-extralight";
+    src: url(./Assets/fonts/Mukta/Mukta-ExtraLight.ttf);
+}
+@font-face {
+    font-family: "mukta-light";
+    src: url(./Assets/fonts/Mukta/Mukta-Light.ttf);
+}
+@font-face {
+    font-family: "mukta-medium";
+    src: url(./Assets/fonts/Mukta/Mukta-Medium.ttf);
+}
+@font-face {
+    font-family: "mukta-regular";
+    src: url(./Assets/fonts/Mukta/Mukta-Regular.ttf);
+}
+@font-face {
+    font-family: "mukta-semibold";
+    src: url(./Assets/fonts/Mukta/Mukta-SemiBold.ttf);
+}
+
+
+
+
+/*INDEX*/
+
+.header{
+    padding: 10px 0;
+}
+.ul{
+    display: flex;
+    justify-content: space-between; 
+    margin: 0 10px; 
+    list-style-type: none;
+}
+.li{
+    margin: 0 15px;
+}
+a {
+    font-size: 18px;
+    color: black;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    font-family: "mukta-extralight";
+}
+.imgInicial{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: fit-content;
+    margin-bottom: 60px;
+}
+.imagenBYW{
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.text{
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 20px;
+}
+h1{
+    place-self: center;
+    font-family: "mukta-extrabold";
+    font-size: 20px;
+}
+.view{
+    font-family: "mukta-extraligh";
+    font-size: 15px;
+}
+.elements{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    justify-items: center;
+    margin: 10px 10px;
+}
+.imag{
+    width: 380px;
+    height: 380px;
+    gap: 30px;
+}
+.collagesadebyw{
+    display: block; 
+    margin: 0 auto; 
+    width: 50%;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+.hm{
+    display: block; 
+    margin: 0 auto; 
+    font-family: "mukta-extralight";
+    font-size: 17px;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+footer {  
+    display: grid;  
+    grid-template-columns: 1fr 1fr 1fr;  
+    width: 100%;  
+    justify-items: center;  
+    background-color: #181818;  
+    padding: 20px;  
+    min-height: 100px;  
+}  
+.redesandlogo{
+    background-color: #181818;
+    align-items: center;
+    margin-top: 35px;
+}
+.redesandlogo img {  
+    max-width: 50px;  
+    margin: 0 10px; 
+    background-color: #181818;
+}
+h2{
+    font-family: "juniper";
+    font-size: 55px;
+    color: #EFEFE8;
+    background-color: #181818;
+    text-align: center;
+}
+.foot{
+    font-family: "mukta-extralight";
+    color: #EFEFE8;
+    background-color: #181818;
+}
+
+/* SHOPALL*/
+
+.discography{
+    text-decoration: none;
+    color: #181818;
+    background-color: #EFEFE8;
+    margin-bottom: 40px;
+}
+.sadepack{
+    width: 1200px;
+    display: block; 
+    margin: 30px auto; 
+}
+
+.seccioneselementos{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: center;         
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    
+}
+.elementos{
+    height: 50%;
+    width: 50%; 
+    margin-left: 370px;      
+}
