@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color:#EFEFE8;
+    
   }
   @font-face {
     font-family: "juniper";
@@ -43,24 +43,54 @@
 /*INDEX*/
 
 .header{
-    padding: 10px 0;
+    background-color:#EFEFE8;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
 }
-.ul{
-    display: flex;
-    justify-content: space-between; 
-    margin: 0 10px; 
+nav .ul{
+    display: grid;
+    grid-template-columns:1fr 1fr;
     list-style-type: none;
+    margin-top: 15px;
+    text-align: center;
+    }
+nav .ul .li a{
+   font-family:"mukta-extralight" ;
+   text-decoration: none;
+   color: black;
+   font-size: 16px;
 }
-.li{
-    margin: 0 15px;
+.boton-carrito{
+   font-family:"mukta-extralight" ;
+   font-size: 16px;
 }
-a {
-    font-size: 18px;
-    color: black;
+
+.boton-carrito a{
     text-decoration: none;
-    padding: 10px 15px;
-    display: block;
-    font-family: "mukta-extralight";
+    color: black;
+}
+.search-bar{
+    margin-top: 15px;
+}
+.search-bar .buscador{
+    border-radius: 5px;
+    text-align: left;
+    width: 400px;
+    height:22px;
+    border-width: 1px;     
+}
+.search-bar .botonBuscar{
+        border-radius: 5px;
+        text-align: center;
+        width: 80px;
+        height:22px;
+        border-width: 1px;   
+}
+body{
+    background-color:#EFEFE8;
+}
+main{
+    background-color:#EFEFE8;
 }
 .imgInicial{
     display: flex;
@@ -79,21 +109,25 @@ a {
     justify-content: space-between;
     margin: 0px 20px;
 }
+.view{
+    font-family: "mukta-extraligh";
+    font-size: 15px;
+    text-decoration: none;
+    color: black;
+}
 h1{
     place-self: center;
     font-family: "mukta-extrabold";
     font-size: 20px;
 }
-.view{
-    font-family: "mukta-extraligh";
-    font-size: 15px;
-}
+
 .elements{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
     justify-items: center;
-    margin: 10px 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .imag{
     width: 380px;
@@ -115,64 +149,220 @@ h1{
     text-align: center;
     margin-top: 60px;
     margin-bottom: 60px;
-}
-footer {  
-    display: grid;  
-    grid-template-columns: 1fr 1fr 1fr;  
-    width: 100%;  
-    justify-items: center;  
-    background-color: #181818;  
-    padding: 20px;  
-    min-height: 100px;  
-}  
-.redesandlogo{
-    background-color: #181818;
-    align-items: center;
-    margin-top: 35px;
-}
-.redesandlogo img {  
-    max-width: 50px;  
-    margin: 0 10px; 
-    background-color: #181818;
-}
-h2{
-    font-family: "juniper";
-    font-size: 55px;
-    color: #EFEFE8;
-    background-color: #181818;
-    text-align: center;
-}
-.foot{
-    font-family: "mukta-extralight";
-    color: #EFEFE8;
-    background-color: #181818;
-}
-
-/* SHOPALL*/
-
-.discography{
+    color: black;
     text-decoration: none;
-    color: #181818;
-    background-color: #EFEFE8;
-    margin-bottom: 40px;
 }
-.sadepack{
-    width: 1200px;
-    display: block; 
-    margin: 30px auto; 
-}
-
-.seccioneselementos{
+  footer{
+    background-color: black;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    justify-items: center;         
-    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+ }
+ .redesandlogo{
+    margin-left: 60px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+ }
+.redesandlogo .sade{
+    font-family: "juniper";
+    font-size: 90px;
+    color: #AA0D0F;
+}
+.redes{
+    margin-left: 25px;
+}
+.youtube{
+    width: 20px;
+    height: 22px;
+    margin-bottom: -4px;
+}
+.footInfo{
+    color: #EFEFE8;
+    font-family:"mukta-extralight" ;
+    font-size: 17px;
     margin-top: 50px;
-    margin-bottom: 30px;
+    margin-left: 50px;
+}
+/*SHOP*/
+.shop{
+    font-family: "juniper";
+    font-size: 50px;
+    color: black;
+    display: block;
+    margin: 40px 0px;
+}
+.viniloimagen{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.imgVinilos{
+    width: 95%;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.secciones-filtro{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    gap: 40px;
+}
+.secciones{
+    border: none;
+    font-family: "mukta-extralight";
+    font-size: 18px;
+    background-color: #EFEFE8;
     
 }
-.elementos{
-    height: 50%;
-    width: 50%; 
-    margin-left: 370px;      
+.contenedor-productosFiltro{
+    justify-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.card{
+    border: 2px solid #AA0D0F; 
+    width: 300px;
+    height: 400px;
+    border-radius: 30px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr ;
+}
+.card img {
+    display: block;          
+    margin: 0 auto;            
+    margin-top: 20px;          
+    max-width: 100%;           
+    height: auto;   
+}
+.card-content{
+    margin-bottom: 30px;
+}
+.h2{
+    font-family:"mukta-extralight" ;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.precio{
+    font-family: "mukta-light";
+    font-size: 30px;
+    margin-left: 40px;
+}
+.buy-button {
+    background-color: #AA0D0F; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+     border-radius: 5px; 
+     cursor: pointer; 
+    font-family: "mukta-extralight"; 
+    font-size: 12px;
+    margin-left: 40px;
+    height: 40px;
+}
+.imgfinaal{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.lastfoto{
+    width: 95%;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/* CARRITO DE COMPRAS*/
+.titulo{
+    font-family:"mukta-light" ;
+    color: #AA0D0F;
+    font-size: 60px;
+}
+.carritocontenedor{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+     background-color: whitesmoke;
+     width: 50%;
+     margin: 40px auto;    
+}
+.carrito-productos{
+    padding: 10px;
+}
+.carrito-producto{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 7px;
+    padding: 10px;
+    padding-right: 40px;
+    margin: 20px 30px;
+}
+.titulodelprod{
+    font-family: "mukta-light";
+}
+.carrito-producto small{
+    font-size: 13px;
+    font-family: "mukta-extralight";
+}
+.carrito-productoimagen{
+    width: 4rem;
+    border-radius: 1rem;
+}
+.headerCarrito{
+    text-align: center;
+}
+.carritoEliminarproducto{
+    border: 0;
+    color: #AA0D0F;
+    cursor: pointer;
+}
+.carritoAcciones{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 60px;
+    margin-right: 60px;
+    font-family: "mukta-extralight";
+
+}
+ .carritoAcciones-comprar{
+    background-color:#AA0D0F ;
+    cursor: pointer;
+    border-radius: 4px;
+    border-color: transparent;
+    padding: 5px;
+    color: #EFEFE8;
+}
+.boton-vaciarCarrito{
+    cursor: pointer;
+    border-radius: 4px ;
+    border-color: #AA0D0F;
+    padding: 5px;
+    color: black;
+    font-family:"mukta-extralight" ;
+    width: 60px;
+    height: 30px;
+    font-size: 11px;
+}
+.comprarahora{
+    display: flex;     
+    justify-content: space-between; 
+    align-items: center;
+    margin: 20px 60px;
+}
+
+.headerCarrito{
+    display: flex;     
+    justify-content: space-around; 
+    align-items: center;
+    margin-left: 220px;
+    margin-right: 70px;
+    margin-bottom: 40px;
+}
+.disable{
+    display: none;
 }
