@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,78 +13,40 @@
         <h1 class="titulo"> SADE</h1>
     </header>
     <main>
-
         <div class="carritocontenedor">
-            <nav><ul class="ul"><li class="boton-carrito"><a href="../pages/carrito.html"><i class="bi bi-bag"></i> Cart </span></a></li></ul></nav>
+            <nav>
+                <ul class="ul">
+                    <li class="boton-carrito">
+                        <a href="../pages/carrito.html"><i class="bi bi-bag"></i> Cart </a>
+                    </li>
+                </ul>
+            </nav>
             <div class="contenedor-carrito">
                 <p class="carrito-vacio"> Your cart is empty. </p>
             </div>
-            <div class="carrito-productos disable">
-                <div class="carrito-producto">
-                    <img src="../Assets/Images/sadepromisescd.png" alt="promises CD" class="carrito-productoimagen">
-                    <div class="carritoProducto-h2">
-                        <small> Tittle</small>
-                        <h2 class="titulodelprod"> Promise - 1985</h2>
-                    </div>
-                    <div class="carritoProducto-cantidad">
-                        <small>Amount</small>
-                    </div>
-                    <div class="carritoProducto-precio">
-                        <small> Price</small>
-                        <p>$9.98</p>
-                    </div>
-                    <div class="carritoProducto-subtotal">
-                         <small> Subtotal </small>
-                         <p> $9.98</p>
-                    </div>
-                    <button class="carritoEliminarproducto"><i class="bi bi-trash3"></i></button>
-                </div>
-                <div class="carrito-producto">
-                    <img src="../Assets/Images/merchCuadro1.png" alt="merchcuadro1" class="carrito-productoimagen">
-                    <div class="carritoProducto-h2">
-                        <small> Tittle</small>
-                        <h2  class="titulodelprod"> Love Deluxe Frame </h2>
-                    </div>
-                    <div class="carritoProducto-cantidad">
-                        <small>Amount</small>
-                    </div>
-                    <div class="carritoProducto-precio">
-                        <small> Price</small>
-                        <p>$19.99</p>
-                    </div>
-                    <div class="carritoProducto-subtotal">
-                        <small> Subtotal </small>
-                        <p> $19.99</p>
-                    </div>
-                    <button class="carritoEliminarproducto"><i class="bi bi-trash3"></i></button>
-                </div>
-            </div>
+            <div class="carrito-productos disable"></div> 
             <div class="carritoAcciones disable">
                 <p class="carritoTotal">Total</p>
-                <p id="total">$29.97</p>
+                <p id="total">$0.00</p>
             </div>
             <div class="comprarahora"> 
                 <button class="boton-vaciarCarrito">Clear Cart</button>
                 <button class="carritoAcciones-comprar">Order Now</button>
             </div>
-            <div class="contenedor-carrito disable">
-                <p class="carrito-vacio"> Your cart is empty. </p>
+            <div class="headerCarrito">
+                <nav>
+                    <ul class="ul">
+                        <li class="li"><a href="../index.html"> <i class="bi bi-arrow-bar-left"></i> Back to Menu </a></li>
+                    </ul>
+                </nav>
+                <nav>
+                    <ul class="ul">
+                        <li class="li"><a href="./shop.html"> Continue Shopping <i class="bi bi-arrow-bar-right"></i></a></li>
+                    </ul>
+                </nav>
             </div>
-       </div>
-       <div class="headerCarrito">
-            <nav>
-                <ul class="ul">
-                    <li class="li"><a href="../index.html"> <i class="bi bi-arrow-bar-left"></i>
-                        Back to Menu </a></li>
-                </ul>
-            </nav>
-            <nav><ul class="ul"><li class="li"><a href="./shop.html"> Continue Shopping <i class="bi bi-arrow-bar-right"></i>
-            </a></li></ul></nav>
-
-       </div>
-    
+        </div>
     </main>
-
 
     <footer>
         <div class="redesandlogo">
@@ -97,21 +60,21 @@
             </section>
         </div>
         <div class="footInfo">
-                <p class="foot"> Copyright</p>
-                <p class="foot"> Newsletter</p>
-                <p class="foot"> Privacy Policity</p>
-                <p class="foot"> Terms and Conditions</p>
-                <p class="foot"> Shipping and Return Policy</p>
+            <p class="foot"> Copyright</p>
+            <p class="foot"> Newsletter</p>
+            <p class="foot"> Privacy Policity</p>
+            <p class="foot"> Terms and Conditions</p>
+            <p class="foot"> Shipping and Return Policy</p>
         </div>
         <div class="footInfo">
-                <p class="foot"> FAQ</p>
-                <p class="foot"> Shop</p>
-                <p class="foot"> Contact Us</p>
-                <p class="foot"> Concerts</p>
-                <p class="foot"> Size Guide</p>
+            <p class="foot"> FAQ</p>
+            <p class="foot"> Shop</p>
+            <p class="foot"> Contact Us</p>
+            <p class="foot"> Concerts</p>
+            <p class="foot"> Size Guide</p>
         </div>
     </footer>
-
-    <script src="../js/main.js"></script>
+   
+    <script src="../js/carrito.js"></script> 
 </body>
 </html>
