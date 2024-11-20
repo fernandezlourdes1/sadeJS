@@ -433,19 +433,26 @@ function cargarProductos(categoria = null, busqueda = "") {
         return coincidenciaCategoria && coincidenciaBusqueda;
     });
 
-    productosFiltrados.forEach(card => {
-        const div = document.createElement("div");
-        div.classList.add("card");
-        div.innerHTML = `
-            <img src="${card.imagen}" alt="${card.titulo}" class="Producto">
-            <div class="card-content">
-                <h2 class="h2">${card.titulo}</h2>
-                <span class="precio">$${card.precio.toFixed(2)}</span>
-                <button class="buy-button" data-id="${card.id}">Add to Cart</button>
-            </div>
-        `;
-        contenedorProductos.appendChild(div);
-    });
+    if (productosFiltrados.length === 0) {
+        const mensajeNoEncontrado = document.createElement("div");
+        mensajeNoEncontrado.classList.add("mensaje-no-encontrado");
+        mensajeNoEncontrado.innerHTML = `<p>No match found.</p>`;
+        contenedorProductos.appendChild(mensajeNoEncontrado);
+    } else {
+        productosFiltrados.forEach(card => {
+            const div = document.createElement("div");
+            div.classList.add("card");
+            div.innerHTML = `
+                <img src="${card.imagen}" alt="${card.titulo}" class="Producto">
+                <div class="card-content">
+                    <h2 class="h2">${card.titulo}</h2>
+                    <span class="precio">$${card.precio.toFixed(2)}</span>
+                    <button class="buy-button" data-id="${card.id}">Add to Cart</button>
+                </div>
+            `;
+            contenedorProductos.appendChild(div);
+        });
+    }
     agregarEventosBotones(); 
 }
 
@@ -460,10 +467,15 @@ function agregarAlCarrito(e) {
     const idProducto = e.currentTarget.getAttribute("data-id");
     const producto = productos.find(prod => prod.id === idProducto);
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    carrito.push(producto);
-    localStorage.setItem("carrito", JSON.stringify(carrito));
     
-    alert("Product added: " + producto.titulo);
+    const productoExistente = carrito.find(prod => prod.id === idProducto);
+    if (!productoExistente) {
+        carrito.push(producto);
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        alert("Added Product: " + producto.titulo);
+    } else {
+        alert("The product is already in the cast.");
+    }
     
     actualizarContadorCarrito();
 }
@@ -502,20 +514,29 @@ function manejarOrdenarAhora() {
         return;
     }
 
-    const totalAPagar = carrito.reduce((total, producto) => total + producto.precio, 0);
+    let totalAPagar = 0;
+    let detallesProductos = carrito.map(producto => {
+        totalAPagar += producto.precio;
+        return `${producto.titulo}: $${producto.precio.toFixed(2)}`;
+    }).join("\n");
+
+    detallesProductos += `\nTotal a pagar: $${totalAPagar.toFixed(2)}`;
+
+    alert(detallesProductos);
+
+    const cuotas = parseInt(prompt("In how many installments would you like to pay? (maximum 6)"), 10);
     
-    const totalMessage = `Total to pay: $${totalAPagar.toFixed(2)}`;
-    alert(totalMessage);
+    if (cuotas > 0 && cuotas <= 6) {
+        const montoPorCuota = totalAPagar / cuotas;
+        alert(`The amount of each installment is: $${montoPorCuota.toFixed(2)}`);
+        alert("Purchase successful!");
 
-    const cuotas = prompt("Ingrese la cantidad de cuotas que desea:");
-
-    if (cuotas) {
-        alert("Compra realizada con éxito!");
+        vaciarCarrito(); 
+        window.location.href = "../index.html"; 
     } else {
-        alert("Compra cancelada.");
+        alert("Error, you have between 1 and 6 installments available to make the payment.");
     }
 }
-
 document.addEventListener("DOMContentLoaded", function() {
     const botonOrderNow = document.querySelector(".carritoAcciones-comprar");
     if (botonOrderNow) {

@@ -19,28 +19,26 @@ document.addEventListener("DOMContentLoaded", function() {
             div.innerHTML = `
                 <img src="${producto.imagen}" alt="${producto.titulo}" class="carrito-productoimagen">
                 <div class="carritoProducto-h2">
-                    <small> Titulo</small>
+                    <small>Titulo</small>
                     <h2 class="titulodelprod">${producto.titulo}</h2>
                 </div>
-                <div class="carritoProducto-cantidad">
-                    <small>Amount</small>
-                    <p>1</p>
-                </div>
                 <div class="carritoProducto-precio">
-                    <small> Price</small>
+                    <small>Precio</small>
                     <p>$${producto.precio.toFixed(2)}</p>
                 </div>
-                <div class="carritoProducto-subtotal">
-                    <small> Subtotal </small>
-                    <p>$${producto.precio.toFixed(2)}</p>
-                </div>
-                <button class="carritoEliminarproducto" data-id="${producto.id}"><i class="bi bi-trash3"></i></button>
+                <button class="carritoEliminarproducto" data-id="${producto.id}">
+            <i class="bi bi-trash"></i> 
+            </button>
             `;
             carritoProductos.appendChild(div);
             total += producto.precio;
         });
 
         totalElement.textContent = `$${total.toFixed(2)}`; 
+
+
+        const botonOrderNow = document.querySelector(".carritoAcciones-comprar");
+        botonOrderNow.addEventListener("click", () => manejarOrdenarAhora(carrito, total));
     }
 
     const botonesEliminar = document.querySelectorAll(".carritoEliminarproducto");
@@ -53,10 +51,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const botonVaciarCarrito = document.querySelector(".boton-vaciarCarrito");
     botonVaciarCarrito.addEventListener("click", vaciarCarrito);
-
-
-    const botonOrderNow = document.querySelector(".carritoAcciones-comprar");
-    botonOrderNow.addEventListener("click", manejarOrdenarAhora);
 });
 
 function manejarOrdenarAhora() {
@@ -66,37 +60,42 @@ function manejarOrdenarAhora() {
         return;
     }
 
-    const totalAPagar = carrito.reduce((total, producto) => total + producto.precio , 0);
+    let totalAPagar = 0;
+    let detallesProductos = carrito.map(producto => {
+        totalAPagar += producto.precio;
+        return `${producto.titulo}: $${producto.precio.toFixed(2)}`;
+    }).join("\n");
+
+    detallesProductos += `\nTotal to pay: $${totalAPagar.toFixed(2)}`;
+
+    alert(detallesProductos);
+
+    const cuotas = parseInt(prompt("In how many installments would you like to pay? (maximum 6)"), 10);
     
-    const totalMessage = `Total to pay: $${totalAPagar.toFixed(2)}`;
-    alert(totalMessage);
-
-    const cuotas = prompt("Enter the number of installments you want:");
-
-    if (cuotas) {
+    if (cuotas > 0 && cuotas <= 6) {
         const montoPorCuota = totalAPagar / cuotas;
-        alert(`The amount is ${cuotas} quotas of $${montoPorCuota.toFixed(2)} each.`);
-        alert("Purchase made successfully!");
+        alert(`The amount of each installment is: $${montoPorCuota.toFixed(2)}`);
+        alert("Purchase successful!");
 
-        vaciarCarrito();
+        vaciarCarrito(); 
 
-
-        window.location.href = "../pages/shop.html"; 
+        setTimeout(() => {
+            window.location.href = "shop.html"; 
+        }, 1000); 
     } else {
-        alert("canceled purchase.");
+        alert("Error, you have between 1 and 6 installments available to make the payment.");
     }
 }
-
 function eliminarDelCarrito(id) {
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     carrito = carrito.filter(producto => producto.id !== id);
     localStorage.setItem("carrito", JSON.stringify(carrito));
-    actualizarCarrito();
+    actualizarCarrito(); 
 }
 
 function vaciarCarrito() {
     localStorage.removeItem("carrito");
-    actualizarCarrito();
+    actualizarCarrito(); 
 }
 
 function actualizarCarrito() {
@@ -118,39 +117,34 @@ function actualizarCarrito() {
         
         carrito.forEach(producto => {
             const div = document.createElement("div");
-            div.classList.add(" carrito-producto");
+            div.classList.add("carrito-producto");
             div.innerHTML = `
                 <img src="${producto.imagen}" alt="${producto.titulo}" class="carrito-productoimagen">
                 <div class="carritoProducto-h2">
-                    <small> Titulo</small>
+                    <small>Titulo</small>
                     <h2 class="titulodelprod">${producto.titulo}</h2>
                 </div>
-                <div class="carritoProducto-cantidad">
-                    <small>Amount</small>
-                    <p>1</p>
-                </div>
                 <div class="carritoProducto-precio">
-                    <small> Price</small>
+                    <small>Precio</small>
                     <p>$${producto.precio.toFixed(2)}</p>
                 </div>
-                <div class="carritoProducto-subtotal">
-                    <small> Subtotal </small>
-                    <p>$${producto.precio.toFixed(2)}</p>
-                </div>
-                <button class="carritoEliminarproducto" data-id="${producto.id}"><i class="bi bi-trash3"></i></button>
+                <button class="carritoEliminarproducto" data-id="${producto.id}">
+                    <i class="bi bi-trash"></i> 
+                </button>
             `;
             carritoProductos.appendChild(div);
             total += producto.precio;
         });
 
         totalElement.textContent = `$${total.toFixed(2)}`; 
-    }
 
-    const botonesEliminar = document.querySelectorAll(".carritoEliminarproducto");
-    botonesEliminar.forEach(boton => {
-        boton.addEventListener("click", (e) => {
-            const idProducto = e.currentTarget.getAttribute("data-id");
-            eliminarDelCarrito(idProducto);
+
+        const botonesEliminar = document.querySelectorAll(".carritoEliminarproducto");
+        botonesEliminar.forEach(boton => {
+            boton.addEventListener("click", (e) => {
+                const idProducto = e.currentTarget.getAttribute("data-id");
+                eliminarDelCarrito(idProducto);
+            });
         });
-    });
+    }
 }
